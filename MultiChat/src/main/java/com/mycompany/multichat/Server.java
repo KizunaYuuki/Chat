@@ -23,6 +23,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
      */
     public Server() {
         initComponents();
+        thisManager = this;
         this.setLocationRelativeTo(null);
     }
 
@@ -47,7 +48,6 @@ public class Server extends javax.swing.JFrame implements Runnable {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Server");
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -82,10 +82,8 @@ public class Server extends javax.swing.JFrame implements Runnable {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonStart)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 250));
 
@@ -129,37 +127,79 @@ public class Server extends javax.swing.JFrame implements Runnable {
 
         jTabbedPane.getAccessibleContext().setAccessibleName("Tab");
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 500, 440));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    @Override
+    public void run() {
+	while (true)
+	    try {
+		// Chấp nhận kết nối từ Client
+		Socket staffSocket = socket.accept();
+		if (staffSocket != null) {
+		    // Lấy tên của nhân viên vừa nhắn tin cho Server
+		    // Có nhi�?u cách xử lý, đây là cách của mình
+		    br = new BufferedReader(new InputStreamReader(staffSocket.getInputStream()));
+		    String staffName = br.readLine();
+		    staffName = staffName.substring(0, staffName.indexOf(":"));
 
+		    // Tạo ChatPanel và show nó vào cái TabbedPane, khá là đơn giản
+		    Panel panel = new Panel(staffSocket, "Manager", staffName);
+		    jTabbedPane.add(staffName, panel);
+		    panel.updateUI();
+
+		    // Chạy Thread ChatPanel để kiểm tra các tin nhắn đến và đi (�?ã giải thích ở
+		    // phần 1)
+		    Thread thread = new Thread(panel);
+		    thread.start();
+                    Thread.sleep(1000);
+		}
+	    } catch (Exception e) {
+		// Do not change this because it spawn try-catch many time while running thread!
+	    }
+    }
+    
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
         // Cổng mặc định là 8, bạn có thể đổi thành số bạn thích
-		    int port = 8;
-		    try {
-			// Kiểm tra dữ liệu nhập vào
-			port = Integer.parseInt(jTextField1.getText());
-		    } catch (Exception e) {
-			JOptionPane.showMessageDialog(contentPane,
-			                "Can't start at this port, program will use the default port=8\nDetails: " + e,
-			                "Error while read Port", JOptionPane.ERROR_MESSAGE);
-		    }
-		    try {
-			// Hiểu nôm na là chạy Server tại port này
-			socket = new ServerSocket(port);
-			JOptionPane.showMessageDialog(contentPane, "Server is running at port: " + port, "Started server",
-			                JOptionPane.INFORMATION_MESSAGE);
+        int port = 8;
+        try {
+            // Kiểm tra dữ liệu nhập vào
+            port = Integer.parseInt(jTextField1.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(contentPane,
+                            "Can't start at this port, program will use the default port=8\nDetails: " + e,
+                            "Error while read Port", JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            // Hiểu nôm na là chạy Server tại port này
+            socket = new ServerSocket(port);
+            JOptionPane.showMessageDialog(contentPane, "Server is running at port: " + port, "Started server",
+                            JOptionPane.INFORMATION_MESSAGE);
 
-		    } catch (Exception e) {
-			JOptionPane.showMessageDialog(contentPane, "Details: " + e, "Start server error",
-			                JOptionPane.ERROR_MESSAGE);
-		    }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(contentPane, "Details: " + e, "Start server error",
+                            JOptionPane.ERROR_MESSAGE);
+        }
 
-		    // Chạy Server (class hiên tại) để kiểm tra các luồng kết nối vào server sau này
-		    // Ở trên mình đã gán thisManager=this (tức class hiện tại)
-		    Thread t = new Thread(thisManager);
-		    t.start();
+        // Chạy Server (class hiên tại) để kiểm tra các luồng kết nối vào server sau này
+        // Ở trên mình đã gán thisManager=this (tức class hiện tại)
+        Thread thread = new Thread(thisManager);
+        thread.start();
     }//GEN-LAST:event_jButtonStartActionPerformed
 
     /**
@@ -194,6 +234,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
             public void run() {
                 new Server().setVisible(true);
                 new Client().setVisible(true);
+                new Client().setVisible(true);
                 
             }
         });
@@ -211,38 +252,11 @@ public class Server extends javax.swing.JFrame implements Runnable {
     // End of variables declaration//GEN-END:variables
     
     
-    ManagerGUI thisManager;
+    Server thisManager;
     ServerSocket socket = null;
     BufferedReader br = null;
     Thread thread;
     private JPanel contentPane;
     
-    @Override
-    public void run() {
-	while (true)
-
-	    try {
-		// Chấp nhận kết nối từ Client
-		Socket staffSocket = socket.accept();
-		if (staffSocket != null) {
-		    // Lấy tên của nhân viên vừa nhắn tin cho Server
-		    // Có nhi�?u cách xử lý, đây là cách của mình
-		    br = new BufferedReader(new InputStreamReader(staffSocket.getInputStream()));
-		    String staffName = br.readLine();
-		    staffName = staffName.substring(0, staffName.indexOf(":"));
-
-		    // Tạo ChatPanel và show nó vào cái TabbedPane, khá là đơn giản
-		    ChatPanelMain chatPanel = new ChatPanelMain(staffSocket, "Manager", staffName);
-		    jTabbedPane.add(staffName, chatPanel);
-		    chatPanel.updateUI();
-
-		    // Chạy Thread ChatPanel để kiểm tra các tin nhắn đến và đi (�?ã giải thích ở
-		    // phần 1)
-		    Thread t = new Thread(chatPanel);
-		    t.start();
-		}
-	    } catch (Exception e) {
-		// Do not change this because it spawn try-catch many time while running thread!
-	    }
-    }
+    
 }

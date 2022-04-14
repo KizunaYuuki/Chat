@@ -174,7 +174,7 @@ public class ClientGUI extends JFrame {
 
 			// Tạo một ChatPanel
 			panel.removeAll();
-			ChatPanel chatPanel = new ChatPanel(socket, name, "Manager");
+			Panel chatPanel = new Panel(socket, name, "Manager");
 			panel.add(chatPanel);
 			panel.updateUI();
 

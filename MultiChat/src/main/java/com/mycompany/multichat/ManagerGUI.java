@@ -43,6 +43,7 @@ public class ManagerGUI extends JFrame implements Runnable {
 	    public void run() {
 		try {
 		    ManagerGUI frame = new ManagerGUI();
+                    new ClientGUI().setVisible(true);
 		    frame.setVisible(true);
 		} catch (Exception e) {
 		    e.printStackTrace();
@@ -127,7 +128,7 @@ public class ManagerGUI extends JFrame implements Runnable {
 		    staffName = staffName.substring(0, staffName.indexOf(":"));
 
 		    // Tạo ChatPanel và show nó vào cái TabbedPane, khá là đơn giản
-		    ChatPanel chatPanel = new ChatPanel(staffSocket, "Manager", staffName);
+		    Panel chatPanel = new Panel(staffSocket, "Manager", staffName);
 		    tabbedPane.add(staffName, chatPanel);
 		    chatPanel.updateUI();
 

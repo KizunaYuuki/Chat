@@ -4,9 +4,15 @@
  */
 package com.mycompany.multichat;
 
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.net.Socket;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -31,7 +37,6 @@ public class Client extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -40,25 +45,13 @@ public class Client extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButtonConnection = new javax.swing.JButton();
-        jPanelMain = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Client");
         setMinimumSize(new java.awt.Dimension(620, 440));
         setName("frameClient"); // NOI18N
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -117,22 +110,23 @@ public class Client extends javax.swing.JFrame {
                 .addContainerGap(242, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, -1));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new java.awt.GridLayout());
 
-        jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);
-        jPanelMain.setLayout(jPanelMainLayout);
-        jPanelMainLayout.setHorizontalGroup(
-            jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanelMainLayout.setVerticalGroup(
-            jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 440, Short.MAX_VALUE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        getContentPane().add(jPanelMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 500, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,17 +146,19 @@ public class Client extends javax.swing.JFrame {
             if (socket == null) throw new Exception("Null Socket");
 
             // Tạo một ChatPanel
-            ChatPanelMain chatPanel = new ChatPanelMain(socket, name, "Server");
-            jPanelMain.add(chatPanel);
-            jPanelMain.updateUI();
             
-            // Cho ChatPanel này "chạy" để kiểm tra tin nhắn đến và đi
-            Thread t = new Thread(chatPanel);
-            t.start();
+            jPanel4.removeAll();
+            Panel panel = new Panel(socket, name, "Manager");
+            jPanel4.add(panel);
+            jPanel4.updateUI();
 
-            // chatPanel.os.write(13);
-            // chatPanel.os.write(10);
-            // chatPanel.os.flush();
+            // Cho ChatPanel này "chạy" để kiểm tra tin nhắn đến và đi
+            Thread thread = new Thread(panel);
+            thread.start();
+
+//            panel.os.write(13);
+//            panel.os.write(10);
+//            panel.os.flush();
 
             // Thông báo chạy thành công
             JOptionPane.showMessageDialog(contentPane, "Connect success", "Connected",
@@ -215,18 +211,20 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanelMain;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
     
+    
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    
     Socket socket = null;
     String ip = "";
     int port = 0;
     String name = "";
-    private JPanel contentPane;
-    
-    
+    BufferedReader bf = null;
+    DataOutputStream os = null;
 }
