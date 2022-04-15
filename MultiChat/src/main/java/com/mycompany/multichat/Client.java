@@ -7,7 +7,14 @@ package com.mycompany.multichat;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -26,6 +33,13 @@ public class Client extends javax.swing.JFrame {
     public Client() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try {
+            InetAddress IP = InetAddress.getLocalHost();
+            jTextField2.setText(String.valueOf(IP.getHostAddress()));
+            jTextField3.setText("8");
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -148,7 +162,7 @@ public class Client extends javax.swing.JFrame {
             // Tạo một ChatPanel
             
             jPanel4.removeAll();
-            Panel panel = new Panel(socket, name, "Manager");
+            Panel panel = new Panel(socket, name, "Server");
             jPanel4.add(panel);
             jPanel4.updateUI();
 

@@ -25,6 +25,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
         initComponents();
         thisManager = this;
         this.setLocationRelativeTo(null);
+        jTextField1.setText("8");
     }
 
     /**
@@ -159,7 +160,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
 		    staffName = staffName.substring(0, staffName.indexOf(":"));
 
 		    // Tạo ChatPanel và show nó vào cái TabbedPane, khá là đơn giản
-		    Panel panel = new Panel(staffSocket, "Manager", staffName);
+		    Panel panel = new Panel(staffSocket, "Server", staffName);
 		    jTabbedPane.add(staffName, panel);
 		    panel.updateUI();
 
@@ -167,7 +168,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
 		    // phần 1)
 		    Thread thread = new Thread(panel);
 		    thread.start();
-                    Thread.sleep(1000);
+//                    Thread.sleep(1000);
 		}
 	    } catch (Exception e) {
 		// Do not change this because it spawn try-catch many time while running thread!
