@@ -35,7 +35,7 @@ public class Panel extends javax.swing.JPanel implements Runnable {
             (new Thread(this)).start();
         } catch (IOException ex) {
             System.out.println("Error while create Panel");
-            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -172,7 +172,11 @@ public class Panel extends javax.swing.JPanel implements Runnable {
     String receiver;
     BufferedReader bf = null;
     DataOutputStream os = null;
-
+    
+    public JTextArea getArea() {
+        return jTextArea1;
+    }
+    
     @Override
     public void run() {
         while (true) {

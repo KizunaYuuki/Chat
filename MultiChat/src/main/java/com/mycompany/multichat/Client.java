@@ -169,6 +169,8 @@ public class Client extends javax.swing.JFrame {
             // Cho ChatPanel này "chạy" để kiểm tra tin nhắn đến và đi
             Thread thread = new Thread(panel);
             thread.start();
+            
+            
 
 //            panel.os.write(13);
 //            panel.os.write(10);
