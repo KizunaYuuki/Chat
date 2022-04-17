@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -176,13 +177,16 @@ public class Panel extends javax.swing.JPanel implements Runnable {
     public JTextArea getArea() {
         return jTextArea1;
     }
+    public JTextPane getPane() {
+        return jTextPane1;
+    }
     
     @Override
     public void run() {
         while (true) {
 	    try {
 		if (socket != null) {
-		    String msg = "";
+		    String msg;
 		    while ((msg = bf.readLine()) != null) {
 			// Nếu có tin nhắn đến thì ghi vào lịch sử
 			jTextArea1.append(msg + "\n");
