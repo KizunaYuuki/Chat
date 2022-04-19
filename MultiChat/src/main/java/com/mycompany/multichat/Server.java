@@ -25,7 +25,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
         initComponents();
         thisManager = this;
         this.setLocationRelativeTo(null);
-        jTextField1.setText("8");
+        jTextFieldServerPort.setText("8");
     }
 
     /**
@@ -37,92 +37,92 @@ public class Server extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelMenuServer = new javax.swing.JPanel();
+        jTextFieldServerPort = new javax.swing.JTextField();
+        jLabelServerPort = new javax.swing.JLabel();
         jButtonStart = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelChatServer = new javax.swing.JPanel();
         jTabbedPane = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jPanelSub = new javax.swing.JPanel();
+        jLabelNotice = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Server");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 204));
+        jPanelMenuServer.setBackground(new java.awt.Color(0, 102, 204));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Server Port");
+        jLabelServerPort.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelServerPort.setText("Server Port");
 
         jButtonStart.setText("Start Server");
         jButtonStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonStartActionPerformed(evt);
+                jButtonStart(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelMenuServerLayout = new javax.swing.GroupLayout(jPanelMenuServer);
+        jPanelMenuServer.setLayout(jPanelMenuServerLayout);
+        jPanelMenuServerLayout.setHorizontalGroup(
+            jPanelMenuServerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuServerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelMenuServerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldServerPort, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelServerPort, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonStart, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelMenuServerLayout.setVerticalGroup(
+            jPanelMenuServerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuServerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabelServerPort)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldServerPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonStart)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 250));
+        jPanelChatServer.setBackground(new java.awt.Color(255, 255, 250));
 
         jTabbedPane.setName("Tab"); // NOI18N
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelSub.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setText("Chờ Client kết nối");
+        jLabelNotice.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabelNotice.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelNotice.setText("Chờ Client kết nối");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelSubLayout = new javax.swing.GroupLayout(jPanelSub);
+        jPanelSub.setLayout(jPanelSubLayout);
+        jPanelSubLayout.setHorizontalGroup(
+            jPanelSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSubLayout.createSequentialGroup()
                 .addGap(126, 126, 126)
-                .addComponent(jLabel3)
+                .addComponent(jLabelNotice)
                 .addContainerGap(166, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelSubLayout.setVerticalGroup(
+            jPanelSubLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSubLayout.createSequentialGroup()
                 .addGap(185, 185, 185)
-                .addComponent(jLabel3)
+                .addComponent(jLabelNotice)
                 .addContainerGap(194, Short.MAX_VALUE))
         );
 
-        jTabbedPane.addTab("Start", jPanel3);
+        jTabbedPane.addTab("Start", jPanelSub);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanelChatServerLayout = new javax.swing.GroupLayout(jPanelChatServer);
+        jPanelChatServer.setLayout(jPanelChatServerLayout);
+        jPanelChatServerLayout.setHorizontalGroup(
+            jPanelChatServerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanelChatServerLayout.setVerticalGroup(
+            jPanelChatServerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
@@ -133,14 +133,14 @@ public class Server extends javax.swing.JFrame implements Runnable {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelMenuServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelChatServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMenuServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelChatServer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -160,7 +160,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
 		    staffName = staffName.substring(0, staffName.indexOf(":"));
 
 		    // Tạo ChatPanel và show nó vào cái TabbedPane, khá là đơn giản
-		    Panel panel = new Panel(staffSocket, "Server", staffName);
+		    ChatPanel panel = new ChatPanel(staffSocket, "Server", staffName);
 		    jTabbedPane.add(staffName, panel);
 		    panel.updateUI();
 
@@ -175,12 +175,12 @@ public class Server extends javax.swing.JFrame implements Runnable {
 	    }
     }
     
-    private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
+    private void jButtonStart(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStart
         // Cổng mặc định là 8, bạn có thể đổi thành số bạn thích
         int port = 8;
         try {
             // Kiểm tra dữ liệu nhập vào
-            port = Integer.parseInt(jTextField1.getText());
+            port = Integer.parseInt(jTextFieldServerPort.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(contentPane,
                             "Can't start at this port, program will use the default port=8\nDetails: " + e,
@@ -201,7 +201,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
         // Ở trên mình đã gán thisManager=this (tức class hiện tại)
         Thread thread = new Thread(thisManager);
         thread.start();
-    }//GEN-LAST:event_jButtonStartActionPerformed
+    }//GEN-LAST:event_jButtonStart
 
     /**
      * @param args the command line arguments
@@ -233,31 +233,25 @@ public class Server extends javax.swing.JFrame implements Runnable {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                new Client().setVisible(true);
                 new Server().setVisible(true);
-                new Client().setVisible(true);
-                new Client().setVisible(true);
-                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonStart;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabelNotice;
+    private javax.swing.JLabel jLabelServerPort;
+    private javax.swing.JPanel jPanelChatServer;
+    private javax.swing.JPanel jPanelMenuServer;
+    private javax.swing.JPanel jPanelSub;
     private javax.swing.JTabbedPane jTabbedPane;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldServerPort;
     // End of variables declaration//GEN-END:variables
-    
-    
     Server thisManager;
     ServerSocket socket = null;
     BufferedReader br = null;
     Thread thread;
     private JPanel contentPane;
-    
-    
 }

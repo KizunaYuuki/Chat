@@ -35,8 +35,8 @@ public class Client extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         try {
             InetAddress IP = InetAddress.getLocalHost();
-            jTextField2.setText(String.valueOf(IP.getHostAddress()));
-            jTextField3.setText("8");
+            jTextFieldIP.setText(String.valueOf(IP.getHostAddress()));
+            jTextFieldPort.setText("8");
         } catch (UnknownHostException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,15 +51,15 @@ public class Client extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jPanelMainClient = new javax.swing.JPanel();
+        jTextFieldName = new javax.swing.JTextField();
+        jLabelName = new javax.swing.JLabel();
+        jLabelIP = new javax.swing.JLabel();
+        jTextFieldIP = new javax.swing.JTextField();
+        jLabelPort = new javax.swing.JLabel();
+        jTextFieldPort = new javax.swing.JTextField();
         jButtonConnection = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        jPanelChatClient = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Client");
@@ -67,90 +67,90 @@ public class Client extends javax.swing.JFrame {
         setName("frameClient"); // NOI18N
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 204));
+        jPanelMainClient.setBackground(new java.awt.Color(0, 102, 204));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Name");
+        jLabelName.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelName.setText("Name");
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("IP");
+        jLabelIP.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelIP.setText("IP");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Port");
+        jLabelPort.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelPort.setText("Port");
 
         jButtonConnection.setText("Connection");
         jButtonConnection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonConnectionActionPerformed(evt);
+                jButtonConnect(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelMainClientLayout = new javax.swing.GroupLayout(jPanelMainClient);
+        jPanelMainClient.setLayout(jPanelMainClientLayout);
+        jPanelMainClientLayout.setHorizontalGroup(
+            jPanelMainClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMainClientLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButtonConnection, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                .addGroup(jPanelMainClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldName)
+                    .addComponent(jLabelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldIP)
+                    .addComponent(jTextFieldPort)
+                    .addComponent(jButtonConnection, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addGroup(jPanelMainClientLayout.createSequentialGroup()
+                        .addGroup(jPanelMainClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPort)
+                            .addComponent(jLabelIP))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelMainClientLayout.setVerticalGroup(
+            jPanelMainClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMainClientLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabelName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabelIP)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jLabelPort)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jButtonConnection)
                 .addContainerGap(242, Short.MAX_VALUE))
         );
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanelChatClient.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelChatClient.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelMainClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelChatClient, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelChatClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMainClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonConnectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectionActionPerformed
+    private void jButtonConnect(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnect
         try {
             // Lấy dữ liệu bao gồm name,ip,port
-            ip = jTextField2.getText();
-            port = Integer.parseInt(jTextField3.getText());
-            name = jTextField1.getText();
+            ip = jTextFieldIP.getText();
+            port = Integer.parseInt(jTextFieldPort.getText());
+            name = jTextFieldName.getText();
 
             // Tạo một socket bằng ip và port ở trên
             socket = new Socket(ip, port);
@@ -161,16 +161,19 @@ public class Client extends javax.swing.JFrame {
 
             // Tạo một ChatPanel
             
-            jPanel4.removeAll();
-            Panel panel = new Panel(socket, name, "Server");
-            jPanel4.add(panel);
-            jPanel4.updateUI();
+            jPanelChatClient.removeAll();
+            ChatPanel panel = new ChatPanel(socket, name, "Server");
+            jPanelChatClient.add(panel);
+            jPanelChatClient.updateUI();
 
             // Cho ChatPanel này "chạy" để kiểm tra tin nhắn đến và đi
             Thread thread = new Thread(panel);
             thread.start();
-            panel.getPane().setText("Start");
             
+            // tắt chỉnh sửa
+            jTextFieldName.setEditable(false);
+            jTextFieldIP.setEditable(false);
+            jTextFieldPort.setEditable(false);
 
 //            panel.os.write(13);
 //            panel.os.write(10);
@@ -184,7 +187,7 @@ public class Client extends javax.swing.JFrame {
                             "Error while connect, please check details try again!\nDetails: " + e,
                             "Error while connect", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButtonConnectionActionPerformed
+    }//GEN-LAST:event_jButtonConnect
 
     /**
      * @param args the command line arguments
@@ -223,20 +226,17 @@ public class Client extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnection;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jLabelIP;
+    private javax.swing.JLabel jLabelName;
+    private javax.swing.JLabel jLabelPort;
+    private javax.swing.JPanel jPanelChatClient;
+    private javax.swing.JPanel jPanelMainClient;
+    private javax.swing.JTextField jTextFieldIP;
+    private javax.swing.JTextField jTextFieldName;
+    private javax.swing.JTextField jTextFieldPort;
     // End of variables declaration//GEN-END:variables
-    
-    
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    
     Socket socket = null;
     String ip = "";
     int port = 0;
