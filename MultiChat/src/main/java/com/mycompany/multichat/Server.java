@@ -234,6 +234,7 @@ public class Server extends javax.swing.JFrame implements Runnable {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Client().setVisible(true);
+                new Client().setVisible(true);
                 new Server().setVisible(true);
             }
         });
